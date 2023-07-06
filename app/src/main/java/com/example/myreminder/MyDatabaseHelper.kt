@@ -93,7 +93,6 @@ class MyDatabaseHelper(context: Context?) :
         return userList
     }
 
-
     companion object {
         private const val DATABASE_NAME = "eventslist.db"
         private const val DATABASE_VERSION = 1
