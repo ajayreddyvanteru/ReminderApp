@@ -1,6 +1,5 @@
 package com.example.myreminder
 import android.content.Context
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +7,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.ui.text.toUpperCase
+import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
@@ -24,7 +25,7 @@ class ItemAdapter(private val context: Context, val items: ArrayList<Item>, priv
     }
 
 
-    private fun showCustomDialog(holder: MyViewHolder, position: Int) {
+    private fun showCustomDialog(holder: MyViewHolder, position: Int, name: String) {
         val dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog, null)
 
         val alertDialogBuilder = AlertDialog.Builder(context)
@@ -33,6 +34,8 @@ class ItemAdapter(private val context: Context, val items: ArrayList<Item>, priv
 
         val okButton = dialogView.findViewById<Button>(R.id.button_ok)
         val cancelButton = dialogView.findViewById<Button>(R.id.button_cancel)
+        val title=dialogView.findViewById<TextView>(R.id.text_title)
+        title.setText("Are you sure to delete an event of "+name+"?")
 
         var alertDialog = alertDialogBuilder.create()
 
@@ -61,7 +64,7 @@ class ItemAdapter(private val context: Context, val items: ArrayList<Item>, priv
         holder.hour.text = item.hour
         holder.min.text = item.min
         holder.delete.setOnClickListener {
-            showCustomDialog(holder,position)
+            showCustomDialog(holder,position,item.name)
         }
         holder.itemView.setOnClickListener {
             // Trigger the item click listener

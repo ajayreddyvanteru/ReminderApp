@@ -13,7 +13,7 @@ class MyDatabaseHelper(context: Context?) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     override fun onCreate(db: SQLiteDatabase) {
         val createtablequery =
-            "CREATE TABLE IF NOT EXISTS my_table1 (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,Discription TEXT,mnth TEXT,days TEXT,hour TEXT,min TEXT)"
+            "CREATE TABLE IF NOT EXISTS my_table1 (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,Discription TEXT,mnth TEXT,days TEXT,hour TEXT,min TEXT,ampm TEXT)"
         db.execSQL(createtablequery)
     }
 
@@ -28,11 +28,11 @@ class MyDatabaseHelper(context: Context?) :
     fun createTable(tablename: String) {
         val db = this.writableDatabase
         val createtablequery =
-            "CREATE TABLE IF NOT EXISTS $tablename(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,mnth TEXT,days TEXT,hour TEXT,min TEXT)"
+            "CREATE TABLE IF NOT EXISTS $tablename(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,mnth TEXT,days TEXT,hour TEXT,min TEXT,ampm TEXT)"
         db.execSQL(createtablequery)
     }
 
-    fun insertData(name: String?,Discription: String?, mnth: String?, day: String?, hour: String?, min: String?) {
+    fun insertData(name: String?,Discription: String?, mnth: String?, day: String?, hour: String?, min: String?,ampm: String?) {
         val db = writableDatabase
         val values = ContentValues()
         values.put("name", name)
@@ -41,10 +41,11 @@ class MyDatabaseHelper(context: Context?) :
         values.put("days", day)
         values.put("hour", hour)
         values.put("min", min)
+        values.put("ampm", ampm)
         db.insert("my_table1", null, values)
     }
 
-    fun updateValues(id: Int,name: String?,Discription: String?, mnth: String?, day: String?, hour: String?, min: String?) {
+    fun updateValues(id: Int,name: String?,Discription: String?, mnth: String?, day: String?, hour: String?, min: String?,ampm: String?) {
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put("name", name)
@@ -53,6 +54,7 @@ class MyDatabaseHelper(context: Context?) :
         contentValues.put("days", day)
         contentValues.put("hour", hour)
         contentValues.put("min", min)
+        contentValues.put("ampm", ampm)
         val whereClause = "id = ?"
         val whereArgs = arrayOf(id.toString())
         db.update("my_table1", contentValues, whereClause, whereArgs)
@@ -81,8 +83,9 @@ class MyDatabaseHelper(context: Context?) :
                 val days = cursor.getString(cursor.getColumnIndexOrThrow("days"))
                 val hour = cursor.getString(cursor.getColumnIndexOrThrow("hour"))
                 val min = cursor.getString(cursor.getColumnIndexOrThrow("min"))
+                val ampm = cursor.getString(cursor.getColumnIndexOrThrow("ampm"))
 
-                val user = Item(id,name,Discription,mnth, days, hour, min)
+                val user = Item(id,name,Discription,mnth, days, hour, min,ampm)
                 userList.add(user)
             } while (cursor.moveToNext())
         }

@@ -35,6 +35,7 @@ class UserEntryFragment : Fragment() {
         val days = ArrayList<String>()
         val mnth = arrayOf("January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December")
         val hour = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12")
+        val am_pm = arrayOf("AM","PM")
         val min = ArrayList<String>()
         for (i in (1..31)) {
             days.add(i.toString())
@@ -51,11 +52,14 @@ class UserEntryFragment : Fragment() {
         HOUR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         val MIN = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, min)
         MIN.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val AM_PM = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, am_pm)
+        AM_PM.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         binding.enterday.adapter = DAYS
         binding.entermounth.adapter = MNTH
         binding.hour.adapter = HOUR
         binding.min.adapter = MIN
+        binding.amPm.adapter = AM_PM
 
 
 
@@ -69,17 +73,28 @@ class UserEntryFragment : Fragment() {
             val days = args?.getString("days")
             val hour = args?.getString("hour")
             val min = args?.getString("min")
+            val ampm = args?.getString("ampm")
             binding.enteredname.setText(name)
             binding.Discription.setText(discription)
             binding.entermounth.setSelection(MNTH.getPosition(mnth))
             binding.enterday.setSelection(DAYS.getPosition(days))
             binding.hour.setSelection(HOUR.getPosition(hour))
             binding.min.setSelection(MIN.getPosition(min))
+            binding.amPm.setSelection(AM_PM.getPosition(ampm))
         }else{
             binding.entermounth.setSelection(MNTH.getPosition(Calendar.getInstance().getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())))
             binding.enterday.setSelection(DAYS.getPosition(SimpleDateFormat("d").format(Date())))
-            binding.hour.setSelection(HOUR.getPosition(Calendar.getInstance().get(Calendar.HOUR).toString()))
+            if(Calendar.getInstance().get(Calendar.HOUR).toString()=="0"){
+                binding.hour.setSelection(HOUR.getPosition("12"))
+            }else{
+                binding.hour.setSelection(DAYS.getPosition(Calendar.getInstance().get(Calendar.HOUR).toString()))
+            }
+            if(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)>12){
+                binding.amPm.setSelection(AM_PM.getPosition("PM"))
+            }else
+                binding.amPm.setSelection(AM_PM.getPosition("AM"))
             binding.min.setSelection(MIN.getPosition(Calendar.getInstance().get(Calendar.MINUTE).toString()))
+
         }
 
     }
@@ -93,10 +108,11 @@ class UserEntryFragment : Fragment() {
             var days = binding.enterday.selectedItem as String
             var hour = binding.hour.selectedItem as String
             var min = binding.min.selectedItem as String
+            var ampm = binding.amPm.selectedItem as String
             if (fromedt) {
-                db.updateValues(ID,name, discription, mnth, days, hour, min)
+                db.updateValues(ID,name, discription, mnth, days, hour, min,ampm)
             } else {
-                db.insertData(name, discription, mnth, days, hour, min)
+                db.insertData(name, discription, mnth, days, hour, min,ampm)
             }
 
 

@@ -58,6 +58,7 @@ class UserMasterFragment : Fragment(), OnItemClickListener {
         val days = item.days
         val hour = item.hour
         val min = item.min
+        val ampm = item.ampm
 
         val args = Bundle()
         args.putInt("id", id)
@@ -68,6 +69,7 @@ class UserMasterFragment : Fragment(), OnItemClickListener {
         args.putString("days", days)
         args.putString("hour", hour)
         args.putString("min", min)
+        args.putString("ampm", ampm)
 
 //        val destinationFragment = UserEntryFragment()
 //        destinationFragment.arguments = args

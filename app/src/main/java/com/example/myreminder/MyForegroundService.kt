@@ -44,7 +44,16 @@ class MyForegroundService : Service() {
                 val db = MyDatabaseHelper(context)
                 val formatter = SimpleDateFormat("d/M")
                 val str: String = formatter.format(Date())
+                var ampm=""
                 var hour = Calendar.getInstance().get(Calendar.HOUR).toString()
+                if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) > 12) {
+                    ampm = "PM"
+                } else {
+                    ampm = "AM"
+                }
+                if (hour == "0") {
+                    hour="12"
+                }
                 var min = Calendar.getInstance().get(Calendar.MINUTE).toString()
                 var sec = Calendar.getInstance().get(Calendar.SECOND).toString()
                 val result = db.getUsers()
@@ -65,7 +74,7 @@ class MyForegroundService : Service() {
                         "December" -> mnth = "12"
                         else -> mnth = "Month not exist"
                     }
-                    if (str == i.days + "/" + mnth && "12" == i.hour && min.toInt() >= i.min.toInt()) {
+                    if (str == i.days + "/" + mnth && hour == i.hour && min.toInt() == i.min.toInt() && ampm==i.ampm && sec=="1") {
                         showCustomNotification(context, i.name,i.Discription)
                         startMusicPlayback()
                     }

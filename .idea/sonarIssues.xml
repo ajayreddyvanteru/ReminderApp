@@ -18,76 +18,6 @@
             <set />
           </value>
         </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/common/JBContext.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/cruiseTerminals/SelectConnectFragment.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/cruiseTerminals/SelectTerminalActivity.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/cruiseTerminals/SelectTerminalFragment.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/cruiseterminal/ServerUrlConnectionActivity.kt">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/transaction/custom_billing_inv/BillingInvoiceActivity.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/transaction/custom_billing_inv/BillingInvoiceItemListFragment.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/util/CustomizationHelper.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/res/layout/billing_view_mode_layout.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/res/layout/home/layout/drawer_header.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/res/layout/login/layout-land/activity_login.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/res/layout/login/layout/activity_login.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/res/layout/transaction/billing_entry/layout/fragment_billing_item_list.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/AndroidStudioProjects/JBCruise/DEV/app/src/main/res/values/strings.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/../EventReminder/app/src/main/java/com/example/eventreminder/ListAdapter.java">
           <value>
             <set />
@@ -113,6 +43,31 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/common/JBContext.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/cruiseTerminals/SelectConnectFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/cruiseTerminals/SelectTerminalActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/cruiseTerminals/SelectTerminalFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/cruiseterminal/ServerUrlConnectionActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/home/AppHome.java">
           <value>
             <set />
@@ -128,12 +83,47 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/transaction/custom_billing_inv/BillingInvoiceActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/transaction/custom_billing_inv/BillingInvoiceItemListFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/util/CustomizationHelper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/billing_view_mode_layout.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/home/layout/activity_app_splash_screen.xml">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/home/layout/drawer_header.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/login/layout-land/activity_login.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/login/layout/activity_login.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/transaction/billing_entry/layout/fragment_billing_item_list.xml">
           <value>
             <set />
           </value>
@@ -263,6 +253,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/drawable/stroke_blue_full_curve.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <value>
             <set />
@@ -288,12 +283,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/tool_bar.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/user_item.xml">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml">
           <value>
             <set />
           </value>
