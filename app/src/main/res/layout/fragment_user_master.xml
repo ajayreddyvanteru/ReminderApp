@@ -23,13 +23,22 @@
             android:layout_height="60dp"
             android:orientation="horizontal">
 
+            <androidx.appcompat.widget.ActionMenuView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@color/white"/>
+
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_view"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:queryHint="Search"
-                />
+                android:hint="Search"
+                app:queryHint="Search by event"
+                app:iconifiedByDefault="false"
+                app:searchIcon="@drawable/ic__search_24"
+                /><!--iconifiedByDefault enables click on whole search view-->
 
 
         </LinearLayout>

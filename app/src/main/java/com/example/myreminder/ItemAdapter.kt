@@ -7,13 +7,18 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.compose.ui.text.toUpperCase
-import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
-import java.util.*
+import android.text.TextUtils
 
 
-class ItemAdapter(private val context: Context, val items: ArrayList<Item>, private val listener: OnItemClickListener) : RecyclerView.Adapter<ItemAdapter.MyViewHolder>() {
+
+
+
+class ItemAdapter(private val context: Context, var items: ArrayList<Item>, private val listener: OnItemClickListener) : RecyclerView.Adapter<ItemAdapter.MyViewHolder>() {
+
+    private var filteredItemList: List<Item>? = null
+    private var temp: ArrayList<Item> =items
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -53,9 +58,24 @@ class ItemAdapter(private val context: Context, val items: ArrayList<Item>, priv
         alertDialog.show()
     }
 
+    fun filter(query: String) {
+        items=temp as ArrayList<Item>
+        filteredItemList = if (query.isEmpty()) {
+            items
+        } else {
+            items.filter { item ->
+                item.name.toLowerCase().contains(query.toLowerCase())
+            }
+        }
+        items= filteredItemList as ArrayList<Item>
+        notifyDataSetChanged()
+
+    }
+
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = items[position]
+        filteredItemList = ArrayList(items)
         holder.name.text =item.name
         holder.id=item.id
         holder.Discription.text =item.Discription
