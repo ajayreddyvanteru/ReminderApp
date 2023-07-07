@@ -40,7 +40,7 @@ class UserEntryFragment : Fragment() {
         for (i in (1..31)) {
             days.add(i.toString())
         }
-        for (i in 1..60) {
+        for (i in 0..60) {
             min.add(i.toString())
         }
 

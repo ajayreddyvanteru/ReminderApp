@@ -78,6 +78,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/home/DashboardIconFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/login/LogInTextFragment.java">
           <value>
             <set />
@@ -89,6 +94,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/transaction/custom_billing_inv/BillingInvoiceItemListFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/transaction/custom_billing_inv/BillingProdDetailCommonFrag.java">
           <value>
             <set />
           </value>
@@ -124,6 +134,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/transaction/billing_entry/layout/fragment_billing_item_list.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/transaction/billing_product_edit/layout-land/fragment_billing_product_edit.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/transaction/billing_product_edit/layout/fragment_billing_product_edit.xml">
           <value>
             <set />
           </value>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -206,9 +207,13 @@
 
                 <Button
                     android:id="@+id/save"
+                    android:background="@drawable/stroke_blue_full_curve"
+                    app:backgroundTint="@color/black"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:text="SAVE" />
+                    android:text="SAVE"
+                    android:textColor="@color/lightblue"
+                    />
             </LinearLayout>
 
 

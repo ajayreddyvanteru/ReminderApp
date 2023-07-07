@@ -46,7 +46,7 @@ class MyForegroundService : Service() {
                 val str: String = formatter.format(Date())
                 var ampm=""
                 var hour = Calendar.getInstance().get(Calendar.HOUR).toString()
-                if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) > 12) {
+                if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= 12 && Calendar.getInstance().get(Calendar.MINUTE)>=0 ) {
                     ampm = "PM"
                 } else {
                     ampm = "AM"
