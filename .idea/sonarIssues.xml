@@ -68,6 +68,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/effia_custom_controls/SortCustom.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/home/AppHome.java">
           <value>
             <set />
@@ -113,6 +118,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/home/layout-sw320dp/activity_app_home.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/home/layout/activity_app_splash_screen.xml">
           <value>
             <set />
@@ -133,7 +143,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/transaction/billing_entry/layout-land/layout_sort.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/transaction/billing_entry/layout/fragment_billing_item_list.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/transaction/billing_entry/layout/layout_sort.xml">
           <value>
             <set />
           </value>
@@ -288,6 +308,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/drawer_layout.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_entry.xml">
           <value>
             <set />
@@ -313,6 +338,26 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/menu/drawable_menu.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/menu/drawer.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/menu/drawer_layout.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/menu/drawer_menu.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml">
           <value>
             <set />
@@ -324,6 +369,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/values/ids.xml">
           <value>
             <set />
           </value>
