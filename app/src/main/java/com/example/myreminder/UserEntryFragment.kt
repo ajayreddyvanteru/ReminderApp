@@ -1,10 +1,12 @@
 package com.example.myreminder
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -20,6 +22,7 @@ class UserEntryFragment : Fragment() {
     var selectedValue: String = ""
     var ID: Int = 0
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,6 +34,7 @@ class UserEntryFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun inflateviews() {
         val days = ArrayList<String>()
         val mnth = arrayOf("January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December")
@@ -87,7 +91,7 @@ class UserEntryFragment : Fragment() {
             if(Calendar.getInstance().get(Calendar.HOUR).toString()=="0"){
                 binding.hour.setSelection(HOUR.getPosition("12"))
             }else{
-                binding.hour.setSelection(DAYS.getPosition(Calendar.getInstance().get(Calendar.HOUR).toString()))
+                binding.hour.setSelection(HOUR.getPosition(Calendar.getInstance().get(Calendar.HOUR).toString()))
             }
             if(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)>12){
                 binding.amPm.setSelection(AM_PM.getPosition("PM"))
@@ -95,7 +99,45 @@ class UserEntryFragment : Fragment() {
                 binding.amPm.setSelection(AM_PM.getPosition("AM"))
             binding.min.setSelection(MIN.getPosition(Calendar.getInstance().get(Calendar.MINUTE).toString()))
 
+            customreminder(hour,min,am_pm)
         }
+
+    }
+
+    private fun customreminder(
+        hour: Array<String>,
+        min: ArrayList<String>,
+        am_pm: Array<String>
+    ) {
+        val weekdays= arrayOf("MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY","SUNDAY","DAILY")
+
+        val WEEKDAYS = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, weekdays)
+        WEEKDAYS.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val HOUR = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, hour)
+        HOUR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val MIN = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, min)
+        MIN.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val AM_PM = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, am_pm)
+        AM_PM.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+
+        binding.weekdays.adapter=WEEKDAYS
+        binding.dHour.adapter = HOUR
+        binding.dMin.adapter = MIN
+        binding.dAmPm.adapter = AM_PM
+
+        if(Calendar.getInstance().get(Calendar.HOUR).toString()=="0"){
+            binding.dHour.setSelection(HOUR.getPosition("12"))
+        }else{
+            binding.dHour.setSelection(HOUR.getPosition(Calendar.getInstance().get(Calendar.HOUR).toString()))
+        }
+        if(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)>12){
+            binding.dAmPm.setSelection(AM_PM.getPosition("PM"))
+        }else
+            binding.dAmPm.setSelection(AM_PM.getPosition("AM"))
+        binding.dMin.setSelection(MIN.getPosition(Calendar.getInstance().get(Calendar.MINUTE).toString()))
+
+
 
     }
 
