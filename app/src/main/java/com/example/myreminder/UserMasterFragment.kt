@@ -1,6 +1,5 @@
 package com.example.myreminder
 
-import android.R.attr.button
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,20 +8,18 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myreminder.databinding.FragmentUserMasterBinding
-import com.google.android.material.navigation.NavigationView
 
 
 class UserMasterFragment : Fragment(), OnItemClickListener {
     lateinit var binding: FragmentUserMasterBinding
-    private var mlist: ArrayList<Item> = ArrayList()
-    private lateinit var adapter1: ItemAdapter
+    private var eventlist: ArrayList<Item> = ArrayList()
+    private lateinit var eventadapter: ItemAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,11 +34,11 @@ class UserMasterFragment : Fragment(), OnItemClickListener {
 
     private fun setViewEvents() {
         var db = MyDatabaseHelper(requireContext())
-        mlist = db.getUsers()
-        adapter1 = ItemAdapter(requireContext(), mlist, this)
+        eventlist = db.getUsers()
+        eventadapter = ItemAdapter(requireContext(), eventlist, this)
         val recyclerView: RecyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = adapter1
+        recyclerView.adapter = eventadapter
 
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             // Handle menu item clicks here
@@ -80,7 +77,7 @@ class UserMasterFragment : Fragment(), OnItemClickListener {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                adapter1.filter(newText.orEmpty())
+                eventadapter.filter(newText.orEmpty())
                 return true
             }
         })
@@ -92,7 +89,7 @@ class UserMasterFragment : Fragment(), OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        val item = adapter1.items[position]
+        val item = eventadapter.items[position]
         /*val data = "Hello, Destination!"
         val adata = "Hello, Destination!"
         val action = UserMasterFragmentDirections.actionUserMasterFragmentToUserEntryFragment(data,adata) -----------for this need to creats args in nav graph
