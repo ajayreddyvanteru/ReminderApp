@@ -3,29 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="HardcodedText">
     <item
-        android:id="@+id/nav_account"
+        android:id="@+id/event"
         android:icon="@drawable/ic__search_24"
-        android:title="My Account" />
+        android:title="event reminder" />
 
     <item
-        android:id="@+id/nav_settings"
+        android:id="@+id/custom"
         android:icon="@drawable/ic__search_24"
-        android:title="Settings" />
+        android:title="custom reminder" />
 
     <item
-        android:id="@+id/nav_logout"
+        android:id="@+id/yearly"
         android:icon="@drawable/ic__search_24"
-        android:title="Logout" />
-    <item
-        android:id="@+id/nav_message"
-        android:icon="@drawable/ic__search_24"
-        android:title="Message" />
-    <item
-        android:id="@+id/nav_chat"
-        android:icon="@drawable/ic__search_24"
-        android:title="Chat" />
-    <item
-        android:id="@+id/nav_profile"
-        android:icon="@drawable/ic__search_24"
-        android:title="Profile" />
+        android:title="yearly reminder" />
+
 </menu>

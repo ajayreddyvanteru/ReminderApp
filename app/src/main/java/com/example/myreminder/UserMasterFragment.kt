@@ -19,7 +19,10 @@ import com.example.myreminder.databinding.FragmentUserMasterBinding
 class UserMasterFragment : Fragment(), OnItemClickListener {
     lateinit var binding: FragmentUserMasterBinding
     private var eventlist: ArrayList<Item> = ArrayList()
+    private var customlist: ArrayList<Item1> = ArrayList()
+    var activity=MainActivity()
     private lateinit var eventadapter: ItemAdapter
+    private lateinit var customWeekAdapter: customWeekAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,34 +30,46 @@ class UserMasterFragment : Fragment(), OnItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_master, container, false)
-        setViewEvents()
+        if(arguments?.getBoolean("saveFromCustom",false) == true){
+            setViewEvents("custom")
+            activity.fromcustom=true
+        }else{
+            setViewEvents("event")
+        }
         return binding.root
     }
 
 
-    private fun setViewEvents() {
+    private fun setViewEvents(name: String) {
         var db = MyDatabaseHelper(requireContext())
         eventlist = db.getUsers()
-        eventadapter = ItemAdapter(requireContext(), eventlist, this)
+        customlist = db.getUsers1()
         val recyclerView: RecyclerView = binding.recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = eventadapter
+
+        if(name.equals("event") && activity.fromcustom==false){
+            eventadapter = ItemAdapter(requireContext(), eventlist, this)
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            recyclerView.adapter = eventadapter
+        } else {
+            customWeekAdapter = customWeekAdapter(requireContext(), customlist, this)
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            recyclerView.adapter = customWeekAdapter
+        }
+
 
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             // Handle menu item clicks here
             when (menuItem.itemId) {
-                R.id.nav_account -> {
-                    // Handle menu item 1 click
-                    Toast.makeText(requireContext(), "message", Toast.LENGTH_SHORT).show()
-                    // Example: display a toast message
-                }
-                R.id.nav_settings -> {
-                    // Handle menu item 2 click
-                    // Example: display a toast message
-                    Toast.makeText(requireContext(), "message2", Toast.LENGTH_SHORT).show()
+                R.id.event -> {
+                    activity.fromcustom=false
+                    setViewEvents("event")
 
                 }
-                R.id.nav_logout -> {
+                R.id.custom -> {
+                    activity.fromcustom=true
+                    setViewEvents("custom")
+                }
+                R.id.yearly -> {
                     // Handle menu item 3 click
                     // Example: display a toast message
                     Toast.makeText(requireContext(), "message3", Toast.LENGTH_SHORT).show()
@@ -71,56 +86,90 @@ class UserMasterFragment : Fragment(), OnItemClickListener {
 
         binding.menu.setOnClickListener(View.OnClickListener { binding.drawerLayout!!.openDrawer(GravityCompat.START) })
 
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
+        if (false) {
+            binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                eventadapter.filter(newText.orEmpty())
-                return true
-            }
-        })
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    eventadapter.filter(newText.orEmpty())
+                    return true
+                }
+            })
+        }
+
 
         binding.buttonadd.setOnClickListener {
-            findNavController().navigate(R.id.action_userMasterFragment_to_userEntryFragment)
+            val args = Bundle()
+            if (activity.fromcustom) {
+                args.putBoolean("addFromCustom", true)
+                val navOptions = NavOptions.Builder().setLaunchSingleTop(true).build()
+                findNavController().navigate(R.id.userEntryFragment, args, navOptions)
+            }else{
+                findNavController().navigate(R.id.action_userMasterFragment_to_userEntryFragment)
+            }
         }
 
     }
 
     override fun onItemClick(position: Int) {
-        val item = eventadapter.items[position]
-        /*val data = "Hello, Destination!"
-        val adata = "Hello, Destination!"
-        val action = UserMasterFragmentDirections.actionUserMasterFragmentToUserEntryFragment(data,adata) -----------for this need to creats args in nav graph
-        findNavController().navigate(action)*/
-        val id = item.id
-        val name = item.name
-        val discription = item.Discription
-        val mnth = item.mnth
-        val days = item.days
-        val hour = item.hour
-        val min = item.min
-        val ampm = item.ampm
+        if (!activity.fromcustom) {
+            val item = eventadapter.items[position]
+            /*val data = "Hello, Destination!"
+            val adata = "Hello, Destination!"
+            val action = UserMasterFragmentDirections.actionUserMasterFragmentToUserEntryFragment(data,adata) -----------for this need to creats args in nav graph
+            findNavController().navigate(action)*/
+            val id = item.id
+            val name = item.name
+            val discription = item.Discription
+            val mnth = item.mnth
+            val days = item.days
+            val hour = item.hour
+            val min = item.min
+            val ampm = item.ampm
 
-        val args = Bundle()
-        args.putInt("id", id)
-        args.putString("name", name)
-        args.putBoolean("fromedt", true)
-        args.putString("discription", discription)
-        args.putString("mnth", mnth)
-        args.putString("days", days)
-        args.putString("hour", hour)
-        args.putString("min", min)
-        args.putString("ampm", ampm)
+            val args = Bundle()
+            args.putInt("id", id)
+            args.putString("name", name)
+            args.putBoolean("fromedt", true)
+            args.putString("discription", discription)
+            args.putString("mnth", mnth)
+            args.putString("days", days)
+            args.putString("hour", hour)
+            args.putString("min", min)
+            args.putString("ampm", ampm)
+            args.putString("ampm", ampm)
 
-//        val destinationFragment = UserEntryFragment()
-//        destinationFragment.arguments = args
+            val navOptions = NavOptions.Builder().setLaunchSingleTop(true).build()
+            findNavController().navigate(R.id.userEntryFragment, args, navOptions)
+        } else {
+            val item = customWeekAdapter.items[position]
+            /*val data = "Hello, Destination!"
+            val adata = "Hello, Destination!"
+            val action = UserMasterFragmentDirections.actionUserMasterFragmentToUserEntryFragment(data,adata) -----------for this need to creats args in nav graph
+            findNavController().navigate(action)*/
+            val id = item.id
+            val name = item.name
+            val discription = item.Discription
+            val hour = item.hour
+            val min = item.min
+            val ampm = item.ampm
+            val weekdays=item.weekdays
 
-//        // or
+            val args = Bundle()
+            args.putInt("id", id)
+            args.putString("name", name)
+            args.putString("discription", discription)
+            args.putString("hour", hour)
+            args.putString("min", min)
+            args.putString("ampm", ampm)
+            args.putString("weekdays", weekdays)
+            args.putBoolean("fromcus", activity.fromcustom)
+            val navOptions = NavOptions.Builder().setLaunchSingleTop(true).build()
+            findNavController().navigate(R.id.userEntryFragment, args, navOptions)
+        }
 
-        val navOptions = NavOptions.Builder().setLaunchSingleTop(true).build()
-        findNavController().navigate(R.id.userEntryFragment, args, navOptions)
 
     }
 
