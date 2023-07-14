@@ -53,6 +53,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/businessobjects/Cart.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/common/JBContext.java">
           <value>
             <set />
@@ -108,7 +118,42 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/masters/customer/BillingCustomerMasterAdapterNew.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/orm/CRM_Customer.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/sales/OpenSaleActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/sales/OpenSaleAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/service_layer/modules/CustomerData.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/transaction/billing_entry/BillingCustomerSelectionActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/transaction/billing_entry/BillingCustomerSelectionFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/java/com/effiasoft/justbilling/transaction/billing_entry/CustomerSelectionAdapter.java">
           <value>
             <set />
           </value>
@@ -143,6 +188,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/flight/fragments/layout/passanger_selection.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/home/layout-sw320dp/activity_app_home.xml">
           <value>
             <set />
@@ -164,6 +214,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/login/layout/activity_login.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JBCruise/DEV/app/src/main/res/layout/transaction/billing_entry/layout-land/activity_billing.xml">
           <value>
             <set />
           </value>
@@ -318,6 +373,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/drawable/ic_radio_button_checked_24.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/drawable/ico_delete.xml">
           <value>
             <set />
@@ -419,6 +479,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/values/styles.xml">
           <value>
             <set />
           </value>

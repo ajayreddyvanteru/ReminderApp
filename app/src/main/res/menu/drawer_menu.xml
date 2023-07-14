@@ -4,17 +4,13 @@
     tools:ignore="HardcodedText">
     <item
         android:id="@+id/event"
-        android:icon="@drawable/ic__search_24"
+        android:icon="@drawable/ic_radio_button_checked_24"
         android:title="event reminder" />
 
     <item
         android:id="@+id/custom"
-        android:icon="@drawable/ic__search_24"
+        android:icon="@drawable/ic_radio_button_checked_24"
         android:title="custom reminder" />
 
-    <item
-        android:id="@+id/yearly"
-        android:icon="@drawable/ic__search_24"
-        android:title="yearly reminder" />
 
 </menu>

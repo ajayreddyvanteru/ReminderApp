@@ -39,6 +39,10 @@ class UserMasterFragment : Fragment(), OnItemClickListener {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.searchView.setQuery("",false)
+    }
 
     private fun setViewEvents(name: String) {
         var db = MyDatabaseHelper(requireContext())
@@ -47,11 +51,22 @@ class UserMasterFragment : Fragment(), OnItemClickListener {
         val recyclerView: RecyclerView = binding.recyclerView
 
         if(name.equals("event") && activity.fromcustom==false){
+            binding.Title.setText("Event Reminder")
+            binding.searchView.visibility=View.GONE
+            binding.searchicon.visibility=View.VISIBLE
+            binding.searchView.setQuery("", true);
+            binding.Title.visibility=View.VISIBLE
             eventadapter = ItemAdapter(requireContext(), eventlist, this)
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = eventadapter
         } else {
             customWeekAdapter = customWeekAdapter(requireContext(), customlist, this)
+            binding.Title.setText("Custom Reminder")
+            activity.fromcustom=true
+            binding.searchView.setQuery("", false);
+            binding.searchView.visibility=View.GONE
+            binding.searchicon.visibility=View.VISIBLE
+            binding.Title.visibility=View.VISIBLE
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = customWeekAdapter
         }
@@ -69,12 +84,6 @@ class UserMasterFragment : Fragment(), OnItemClickListener {
                     activity.fromcustom=true
                     setViewEvents("custom")
                 }
-                R.id.yearly -> {
-                    // Handle menu item 3 click
-                    // Example: display a toast message
-                    Toast.makeText(requireContext(), "message3", Toast.LENGTH_SHORT).show()
-
-                }
             }
 
             // Close the drawer after handling the click
@@ -85,19 +94,27 @@ class UserMasterFragment : Fragment(), OnItemClickListener {
         }
 
         binding.menu.setOnClickListener(View.OnClickListener { binding.drawerLayout!!.openDrawer(GravityCompat.START) })
+        binding.searchicon.setOnClickListener {
+            binding.searchView.visibility=View.VISIBLE
+            binding.searchicon.visibility=View.GONE
+            binding.Title.visibility=View.GONE
+        }
 
-        if (false) {
-            binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return false
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
-                    eventadapter.filter(newText.orEmpty())
+                    if (!activity.fromcustom) {
+                        eventadapter.filter(newText.orEmpty())
+                    } else {
+                        customWeekAdapter.filter(newText.orEmpty())
+                    }
                     return true
                 }
             })
-        }
+
 
 
         binding.buttonadd.setOnClickListener {

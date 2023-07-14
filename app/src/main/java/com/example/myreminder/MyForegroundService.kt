@@ -7,10 +7,12 @@ import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.IBinder
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import java.io.IOException
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.*
 
 //Work even phone is locked
@@ -40,6 +42,7 @@ class MyForegroundService : Service() {
         val context = this
         val timer = Timer()
         timer.scheduleAtFixedRate(object : TimerTask() {
+            @RequiresApi(Build.VERSION_CODES.O)
             override fun run() {
                 val db = MyDatabaseHelper(context)
                 val formatter = SimpleDateFormat("d/M")
@@ -56,32 +59,71 @@ class MyForegroundService : Service() {
                 }
                 var min = Calendar.getInstance().get(Calendar.MINUTE).toString()
                 var sec = Calendar.getInstance().get(Calendar.SECOND).toString()
-                val result = db.getUsers()
-                for (i in result) {
-                    var mnth = ""
-                    when (i.mnth) {
-                        "January" -> mnth = "1"
-                        "February" -> mnth = "2"
-                        "March" -> mnth = "3"
-                        "April" -> mnth = "4"
-                        "May" -> mnth = "5"
-                        "June" -> mnth = "6"
-                        "July" -> mnth = "7"
-                        "Augest" -> mnth = "8"
-                        "september" -> mnth = "9"
-                        "October" -> mnth = "10"
-                        "November" -> mnth = "11"
-                        "December" -> mnth = "12"
-                        else -> mnth = "Month not exist"
-                    }
-                    if (str == i.days + "/" + mnth && hour == i.hour && min.toInt() == i.min.toInt() && ampm==i.ampm && sec=="1") {
-                        showCustomNotification(context, i.name,i.Discription)
-                        startMusicPlayback()
-                    }
-                }
+
+                eventReminder(context,db,str,ampm,hour,min,sec)
+
+                customReminder(context,db,ampm,hour,min,sec)
             }
         }, 0, 1000) // 20 seconds
         return START_STICKY
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun customReminder(
+        context: MyForegroundService,
+        db: MyDatabaseHelper,
+        ampm: String,
+        hour: String,
+        min: String,
+        sec: String
+    ){
+        val result = db.getUsers1()
+        for (i in result) {
+            if (hour == i.hour && min.toInt() == i.min.toInt() && ampm==i.ampm && LocalDate.now().dayOfWeek.toString()==i.weekdays && sec=="1") {
+                showCustomNotification(context, i.name,i.Discription)
+                startMusicPlayback()
+            } else if (hour == i.hour && min.toInt() == i.min.toInt() && ampm==i.ampm && "DAILY"==i.weekdays && sec=="1") {
+                showCustomNotification(context, i.name,i.Discription)
+                startMusicPlayback()
+            }
+            val weekdays= arrayOf("MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY")
+            if (hour == i.hour && min.toInt() == i.min.toInt() && ampm==i.ampm && LocalDate.now().dayOfWeek.toString() in weekdays  && sec=="1") {
+                showCustomNotification(context, i.name,i.Discription)
+                startMusicPlayback()
+            }
+        }
+    }
+    fun eventReminder(
+        context: MyForegroundService,
+        db: MyDatabaseHelper,
+        str: String,
+        ampm: String,
+        hour: String,
+        min: String,
+        sec: String
+    ) {
+        val result = db.getUsers()
+        for (i in result) {
+            var mnth = ""
+            when (i.mnth) {
+                "January" -> mnth = "1"
+                "February" -> mnth = "2"
+                "March" -> mnth = "3"
+                "April" -> mnth = "4"
+                "May" -> mnth = "5"
+                "June" -> mnth = "6"
+                "July" -> mnth = "7"
+                "Augest" -> mnth = "8"
+                "september" -> mnth = "9"
+                "October" -> mnth = "10"
+                "November" -> mnth = "11"
+                "December" -> mnth = "12"
+                else -> mnth = "Month not exist"
+            }
+            if (str == i.days + "/" + mnth && hour == i.hour && min.toInt() == i.min.toInt() && ampm==i.ampm && sec=="1") {
+                showCustomNotification(context, i.name,i.Discription)
+                startMusicPlayback()
+            }
+        }
     }
 
     private fun createPendingIntent(): PendingIntent {
@@ -103,7 +145,7 @@ class MyForegroundService : Service() {
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setContentTitle("My App")
             .setContentText("Foreground Service is running")
-            .setSmallIcon(R.drawable.ic_icon_minus)
+            .setSmallIcon(R.drawable.ic_menu_24)
 
         return notificationBuilder.build()
     }
@@ -125,15 +167,15 @@ class MyForegroundService : Service() {
         }
         // Create the custom notification
         val notificationBuilder = NotificationCompat.Builder(context, "custom_notification_channel")
-            .setSmallIcon(R.drawable.bg4)
+            .setSmallIcon(R.drawable.ic_icon_add)
             .setContentTitle(name)
             .setContentText(discription)
             .setColor(Color.RED)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setAutoCancel(true) // Remove the notification when clicked
             .setOngoing(true)
-            .setStyle(NotificationCompat.BigTextStyle().bigText("This is a custom notification example."))
-            .addAction(R.drawable.ico_delete, "Mama "+name+" "+discription+"anta mama ", null)
+            .setStyle(NotificationCompat.BigTextStyle().bigText("Sowmya you got notification."))
+            .addAction(R.drawable.ico_delete, "Sowmya "+name+" "+discription+"anta ", null)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
 
         val pendingIntent = createPendingIntent()
