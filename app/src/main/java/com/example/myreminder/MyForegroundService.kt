@@ -24,7 +24,7 @@ class MyForegroundService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        mediaPlayer = MediaPlayer.create(this, R.raw.mymusic)
+        mediaPlayer = MediaPlayer.create(this, R.raw.mothersong)
         mediaPlayer.isLooping = true
     }
 
@@ -86,7 +86,7 @@ class MyForegroundService : Service() {
                 startMusicPlayback()
             }
             val weekdays= arrayOf("MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY")
-            if (hour == i.hour && min.toInt() == i.min.toInt() && ampm==i.ampm && LocalDate.now().dayOfWeek.toString() in weekdays  && sec=="1") {
+            if (hour == i.hour && min.toInt() == i.min.toInt() && ampm==i.ampm && LocalDate.now().dayOfWeek.toString() in weekdays && "MONDAY-FRIDAY"==i.weekdays  && sec=="1") {
                 showCustomNotification(context, i.name,i.Discription)
                 startMusicPlayback()
             }
@@ -174,8 +174,8 @@ class MyForegroundService : Service() {
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setAutoCancel(true) // Remove the notification when clicked
             .setOngoing(true)
-            .setStyle(NotificationCompat.BigTextStyle().bigText("Sowmya you got notification."))
-            .addAction(R.drawable.ico_delete, "Sowmya "+name+" "+discription+"anta ", null)
+            .setStyle(NotificationCompat.BigTextStyle().bigText("Ajay you got notification."))
+            .addAction(R.drawable.ico_delete, "Ajay today,"+name+" "+discription+"", null)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
 
         val pendingIntent = createPendingIntent()
@@ -208,7 +208,7 @@ class MyForegroundService : Service() {
         if (isMusicPlaying) {
             mediaPlayer.stop()
             mediaPlayer.release()
-            mediaPlayer = MediaPlayer.create(this, R.raw.mymusic)
+            mediaPlayer = MediaPlayer.create(this, R.raw.mothersong)
             mediaPlayer.isLooping = true
             isMusicPlaying = false
         }
